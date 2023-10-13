@@ -1,8 +1,12 @@
 create database linkedinjobs;
+
 use linkedinjobs;
+
 select * from jobs limit 10;
+
 # Cleaning the Dataset i) We dont need the class column, linkeidn followers of company ,employee count,industry 
 #so you need to drop the column 
+
 ALTER TABLE jobs DROP COLUMN class;
 ALTER TABLE jobs DROP COLUMN LinkedIn_Followers;
 ALTER TABLE jobs DROP COLUMN Industry;
