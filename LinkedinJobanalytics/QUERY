@@ -1,0 +1,25 @@
+create database linkedinjobs;
+use linkedinjobs;
+select * from jobs limit 10;
+# Cleaning the Dataset i) We dont need the class column, linkeidn followers of company ,employee count,industry 
+#so you need to drop the column 
+ALTER TABLE jobs DROP COLUMN class;
+ALTER TABLE jobs DROP COLUMN LinkedIn_Followers;
+ALTER TABLE jobs DROP COLUMN Industry;
+ALTER TABLE jobs DROP COLUMN employee_count;
+#Cleaned 
+
+# Data Analysing 
+# 1) find the count of project manager of each company and the job level entry- level
+
+select company_name,count(designation) as COUNT from jobs where involvement like '%Entry%' and designation ="Project Manager";
+
+# 2)Total applicants of each location 
+
+select company_name,location,count(total_applicants) as TOTAL from jobs group by location ;
+
+# 3)Find the company which need ai and ui together
+
+select company_name,count(AI) as AI,count(UI) as UI from jobs 
+where AI=1 and UI=1 and involvement like '%Entry%' 
+group by company_name;
